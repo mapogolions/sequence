@@ -10,6 +10,8 @@ const take = require('./src/take.js');
 const takeWhile = require('./src/takeWhile.js');
 const repeat = require('./src/repeat.js');
 const repeatedly = require('./src/repeatedly.js');
+const to = require('./src/to.js');
+const until = require('./src/until.js');
 
 module.exports = {
   empty,
@@ -22,4 +24,6 @@ module.exports = {
   takeWhile,
   repeat,
   repeatedly,
+  to,
+  until,
 };
