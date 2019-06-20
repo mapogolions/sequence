@@ -1,6 +1,6 @@
 'use strict';
 
-const { isEmpty, empty, pure, cons } = require('../index.js');
+const { isEmpty, empty, pure, cons } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
   expect(isEmpty(empty)).toBe(true);
