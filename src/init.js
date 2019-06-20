@@ -1,7 +1,5 @@
 'use strict';
 
-import { ModuleMap } from 'jest-haste-map';
-
 const init = (n, f) => {
   const iter = index => () => {
     if (index >= n) return Nil;
