@@ -5,6 +5,7 @@ const pure = require('./src/pure.js');
 const cons = require('./src/cons.js');
 const isEmpty = require('./src/isEmpty.js');
 const toArray = require('./src/toArray.js');
+const init = require('./src/init.js');
 
 module.exports = {
   empty,
@@ -12,4 +13,5 @@ module.exports = {
   cons,
   isEmpty,
   toArray,
+  init,
 };
