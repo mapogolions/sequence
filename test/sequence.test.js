@@ -15,6 +15,7 @@ const {
   until,
   fold,
   append,
+  length,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -76,4 +77,11 @@ test('append one sequence to another', () => {
   expect(toArray(append(empty, to(1, 2)))).toEqual([1, 2]);
   expect(toArray(append(to(1, 2), empty))).toEqual([1, 2]);
   expect(toArray(append(to(1, 2), to(3, 4)))).toEqual([1, 2, 3, 4]);
+});
+
+test('returns the length of sequence', () => {
+  expect(length(empty)).toBe(0);
+  expect(length(pure(10))).toBe(1);
+  expect(length(until(1, 3))).toBe(2);
+  expect(length(to(1, 3))).toBe(3);
 });
