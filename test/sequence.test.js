@@ -19,13 +19,13 @@ test('checks if the sequence is empty', () => {
   expect(isEmpty(cons(0, empty))).toBe(false);
 });
 
-test('converting an sequence to the array', () => {
+test('cast of a sequence to the array', () => {
   expect(toArray(empty)).toEqual([]);
   expect(toArray(pure(10))).toEqual([10]);
   expect(toArray(init(3, x => x))).toEqual([0, 1, 2]);
 });
 
-test('initialization of sequence by supplier', () => {
+test('initialization of a sequence by supplier', () => {
   expect(toArray(init(4, _ => 100))).toEqual([100, 100, 100, 100]);
   expect(toArray(init(2, i => i + 100))).toEqual([100, 101]);
 });
@@ -45,7 +45,7 @@ test('repeatedly use result of the function call', () => {
   expect(toArray(take(1, repeatedly(_ => 'bar')))).toEqual(['bar']);
 });
 
-test('cast of infinite recursive structure to the array cause stack overflow', () => {
+test('cast of a infinite recursive structure to the array cause stack overflow', () => {
   expect(() => toArray(repeat('foo'))).toThrowError(RangeError);
   expect(() => toArray(repeatedly(_ => 'bar'))).toThrowError(RangeError);
 });
