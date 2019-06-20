@@ -12,6 +12,7 @@ const repeat = require('./src/repeat.js');
 const repeatedly = require('./src/repeatedly.js');
 const to = require('./src/to.js');
 const until = require('./src/until.js');
+const fold = require('./src/fold.js');
 
 module.exports = {
   empty,
@@ -26,4 +27,5 @@ module.exports = {
   repeatedly,
   to,
   until,
+  fold,
 };
