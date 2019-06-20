@@ -13,6 +13,7 @@ const {
   repeatedly,
   to,
   until,
+  fold,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -60,4 +61,9 @@ test('range from A to B including', () => {
 test('range from A to B excluding', () => {
   expect(toArray(until(1, 5))).toEqual([1, 2, 3, 4]);
   expect(toArray(until(5, 1))).toEqual([5, 4, 3, 2]);
+});
+
+test('folding recursive data structure', () => {
+  expect(fold((seed, x) => seed + x, 100, to(1, 4))).toBe(110);
+  expect(fold((seed, x) => [x, ...seed], [], to(1, 3))).toEqual([3, 2, 1]);
 });
