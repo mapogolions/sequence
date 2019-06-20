@@ -11,6 +11,8 @@ const {
   takeWhile,
   repeat,
   repeatedly,
+  to,
+  until,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -48,4 +50,14 @@ test('repeatedly use result of the function call', () => {
 test('cast of a infinite recursive structure to the array cause stack overflow', () => {
   expect(() => toArray(repeat('foo'))).toThrowError(RangeError);
   expect(() => toArray(repeatedly(_ => 'bar'))).toThrowError(RangeError);
+});
+
+test('range from A to B including', () => {
+  expect(toArray(to(1, 5))).toEqual([1, 2, 3, 4, 5]);
+  expect(toArray(to(5, 1))).toEqual([5, 4, 3, 2, 1]);
+});
+
+test('range from A to B excluding', () => {
+  expect(toArray(until(1, 5))).toEqual([1, 2, 3, 4]);
+  expect(toArray(until(5, 1))).toEqual([5, 4, 3, 2]);
 });
