@@ -8,6 +8,8 @@ const {
   toArray,
   init,
   take,
+  repeat,
+  repeatedly,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -32,4 +34,14 @@ test('take the first N items from a sequence', () => {
   expect(toArray(take(100, empty))).toEqual([]);
   expect(toArray(take(-10, pure(10)))).toEqual([]);
   expect(toArray(take(1, pure(100)))).toEqual([100]);
+});
+
+test('repeat something N times', () => {
+  expect(toArray(take(2, repeat('foo')))).toEqual(['foo', 'foo']);
+  expect(toArray(take(1, repeatedly(_ => 'bar')))).toEqual(['bar']);
+});
+
+test('infinite recursive calls cause stack overflow', () => {
+  expect(() => toArray(repeat('foo'))).toThrowError(RangeError);
+  expect(() => toArray(repeatedly(_ => 'bar'))).toThrowError(RangeError);
 });
