@@ -7,6 +7,8 @@ const isEmpty = require('./src/isEmpty.js');
 const toArray = require('./src/toArray.js');
 const init = require('./src/init.js');
 const take = require('./src/take.js');
+const repeat = require('./src/repeat.js');
+const repeatedly = require('./src/repeatedly.js');
 
 module.exports = {
   empty,
@@ -16,4 +18,6 @@ module.exports = {
   toArray,
   init,
   take,
+  repeat,
+  repeatedly,
 };
