@@ -8,5 +8,6 @@
   "bracketSpacing":true,
   "arrowParens":"avoid",
   "requirePragma":false,
-  "insertPragma":false
+  "insertPragma":false,
+  "proseWrap": "always"
 }
