@@ -1,6 +1,14 @@
 'use strict';
 
-const { isEmpty, empty, pure, cons, toArray, init, take } = require('../sequence.js');
+const {
+  isEmpty,
+  empty,
+  pure,
+  cons,
+  toArray,
+  init,
+  take,
+} = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
   expect(isEmpty(empty)).toBe(true);
