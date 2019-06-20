@@ -14,6 +14,7 @@ const to = require('./src/to.js');
 const until = require('./src/until.js');
 const fold = require('./src/fold.js');
 const append = require('./src/append.js');
+const length = require('./src/length.js');
 
 module.exports = {
   empty,
@@ -30,4 +31,5 @@ module.exports = {
   until,
   fold,
   append,
+  length,
 };
