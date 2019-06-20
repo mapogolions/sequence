@@ -1,0 +1,15 @@
+{
+  "name": "sequence",
+  "version": "1.0.0",
+  "description": "Purely functional iterators",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "mapogolions",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
