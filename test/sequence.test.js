@@ -17,6 +17,7 @@ const {
   append,
   length,
   nth,
+  iterate,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -94,4 +95,9 @@ test('obtain nth element of sequence', () => {
   expect(nth(1, to(1, 5))).toBe(2);
   expect(nth(4, to(1, 5))).toBe(5);
   expect(() => nth(10, to(1, 10))).toThrowError(Error);
+});
+
+test('generates infinite sequence by rule', () => {
+  expect(toArray(take(5, iterate(1, x => x + 1)))).toEqual([1, 2, 3, 4, 5]);
+  expect(toArray(take(3, iterate(0, x => x - 1)))).toEqual([0, -1, -2]);
 });
