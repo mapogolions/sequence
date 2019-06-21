@@ -16,6 +16,7 @@ const fold = require('./src/fold.js');
 const append = require('./src/append.js');
 const length = require('./src/length.js');
 const nth = require('./src/nth.js');
+const iterate = require('./src/iterate.js');
 
 module.exports = {
   empty,
@@ -34,4 +35,5 @@ module.exports = {
   append,
   length,
   nth,
+  iterate,
 };
