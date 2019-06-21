@@ -15,6 +15,7 @@ const until = require('./src/until.js');
 const fold = require('./src/fold.js');
 const append = require('./src/append.js');
 const length = require('./src/length.js');
+const nth = require('./src/nth.js');
 
 module.exports = {
   empty,
@@ -32,4 +33,5 @@ module.exports = {
   fold,
   append,
   length,
+  nth,
 };
