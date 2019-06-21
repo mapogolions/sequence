@@ -17,6 +17,7 @@ const append = require('./src/append.js');
 const length = require('./src/length.js');
 const nth = require('./src/nth.js');
 const iterate = require('./src/iterate.js');
+const equal = require('./src/equal.js');
 
 module.exports = {
   empty,
@@ -36,4 +37,5 @@ module.exports = {
   length,
   nth,
   iterate,
+  equal,
 };
