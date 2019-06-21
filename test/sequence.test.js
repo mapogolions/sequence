@@ -16,6 +16,7 @@ const {
   fold,
   append,
   length,
+  nth,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -84,4 +85,13 @@ test('returns the length of sequence', () => {
   expect(length(pure(10))).toBe(1);
   expect(length(until(1, 3))).toBe(2);
   expect(length(to(1, 3))).toBe(3);
+});
+
+test('obtain nth element of sequence', () => {
+  expect(() => nth(-1, to(1, 20))).toThrowError(RangeError);
+  expect(nth(0, pure('first'))).toBe('first');
+  expect(nth(0, to(1, 5))).toBe(1);
+  expect(nth(1, to(1, 5))).toBe(2);
+  expect(nth(4, to(1, 5))).toBe(5);
+  expect(() => nth(10, to(1, 10))).toThrowError(Error);
 });
