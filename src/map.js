@@ -1,11 +1,11 @@
 'use strict';
 
 const { Nil, Cons } = require('./adt.js');
-const isEmpty = require('./isEmpty.js');
 
 const map = (f, thunk) => () => {
-  if (isEmpty(thunk)) return Nil;
-  const { head, tail } = thunk();
+  const item = thunk();
+  if (item === Nil) return Nil;
+  const { head, tail } = item;
   return Cons(f(head), map(f, tail));
 };
 

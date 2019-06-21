@@ -1,16 +1,17 @@
 'use strict';
 
-const isEmpty = require('./isEmpty.js');
+const { Nil } = require('./adt.js');
 
 const nth = (index, thunk) => {
   if (index < 0) {
     throw new RangeError('Index out of bounds');
   }
   const iter = (index, current) => {
-    if (isEmpty(current)) {
+    const item = current();
+    if (item === Nil) {
       throw new Error('Not found');
     }
-    const { head, tail } = current();
+    const { head, tail } = item;
     if (index <= 0) return head;
     return iter(index - 1, tail);
   };

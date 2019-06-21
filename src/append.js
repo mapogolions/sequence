@@ -1,11 +1,11 @@
 'use strict';
 
 const { Cons, Nil } = require('./adt.js');
-const isEmpty = require('./isEmpty.js');
 
 const append = (thunk1, thunk2) => () => {
-  if (isEmpty(thunk1)) return thunk2();
-  const { head, tail } = thunk1();
+  const item = thunk1();
+  if (item === Nil) return thunk2();
+  const { head, tail } = item;
   return Cons(head, append(tail, thunk2));
 };
 

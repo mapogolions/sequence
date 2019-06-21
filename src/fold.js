@@ -1,11 +1,11 @@
 'use strict';
 
-const { Cons, Nil } = require('./adt.js');
-const isEmpty = require('./isEmpty.js');
+const { Nil } = require('./adt.js');
 
 const fold = (f, seed, thunk) => {
-  if (isEmpty(thunk)) return seed;
-  const { head, tail } = thunk();
+  const item = thunk();
+  if (item === Nil) return seed;
+  const { head, tail } = item;
   return fold(f, f(seed, head), tail);
 };
 

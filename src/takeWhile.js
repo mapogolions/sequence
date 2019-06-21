@@ -1,11 +1,11 @@
 'use strict';
 
 const { Cons, Nil } = require('./adt.js');
-const isEmpty = require('./isEmpty.js');
 
 const takeWhile = (p, thunk) => () => {
-  if (isEmpty(thunk)) return Nil;
-  const { head, tail } = thunk();
+  const item = thunk();
+  if (item === Nil) return Nil;
+  const { head, tail } = item;
   if (!p(head)) return Nil;
   return Cons(head, takeWhile(p, tail));
 };
