@@ -20,6 +20,7 @@ const iterate = require('./src/iterate.js');
 const equal = require('./src/equal.js');
 const map = require('./src/map.js');
 const filter = require('./src/filter.js');
+const sum = require('./src/sum.js');
 
 module.exports = {
   empty,
@@ -42,4 +43,5 @@ module.exports = {
   equal,
   map,
   filter,
+  sum,
 };
