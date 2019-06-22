@@ -21,6 +21,7 @@ const {
   equal,
   map,
   filter,
+  sum,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -129,4 +130,10 @@ test('take elements while the satisfy the predicate', () => {
   expect(toArray(takeWhile(x => x > 0, to(3, -3)))).toEqual([3, 2, 1]);
   expect(toArray(takeWhile(x => x > 0, to(-3, 3)))).toEqual([]);
   expect(toArray(takeWhile(x => x < 0, empty))).toEqual([]);
+});
+
+test('sum of all elements', () => {
+  expect(sum(to(1, 2))).toBe(3);
+  expect(sum(to(1, 4))).toBe(10);
+  expect(sum(empty)).toBe(0);
 });
