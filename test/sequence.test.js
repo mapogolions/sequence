@@ -19,6 +19,7 @@ const {
   nth,
   iterate,
   equal,
+  iter,
   map,
   filter,
   sum,
@@ -136,4 +137,10 @@ test('sum of all elements', () => {
   expect(sum(to(1, 2))).toBe(3);
   expect(sum(to(1, 4))).toBe(10);
   expect(sum(empty)).toBe(0);
+});
+
+test('iterate on the iterator', () => {
+  const callback = jest.fn(x => x);
+  iter(callback, to(1, 3));
+  expect(callback.mock.calls.length).toBe(3);
 });
