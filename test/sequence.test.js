@@ -20,6 +20,7 @@ const {
   iterate,
   equal,
   map,
+  filter,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -116,4 +117,9 @@ test('mapping something to something', () => {
   expect(toArray(map(x => x, empty))).toEqual([]);
   expect(toArray(map(x => x.length, pure('foo')))).toEqual([3]);
   expect(toArray(map(x => x.length, init(3, _ => 'bar')))).toEqual([3, 3, 3]);
+});
+
+test('filter out elements that do not satisfy the predicate', () => {
+  expect(toArray(filter(x => x > 0, to(-1, 1)))).toEqual([1]);
+  expect(toArray(filter(x => x % 2 === 0, until(1, 10)))).toEqual([2, 4, 6, 8]);
 });
