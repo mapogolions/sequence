@@ -18,6 +18,8 @@ const length = require('./src/length.js');
 const nth = require('./src/nth.js');
 const iterate = require('./src/iterate.js');
 const equal = require('./src/equal.js');
+const map = require('./src/map.js');
+const filter = require('./src/filter.js');
 
 module.exports = {
   empty,
@@ -38,4 +40,6 @@ module.exports = {
   nth,
   iterate,
   equal,
+  map,
+  filter,
 };
