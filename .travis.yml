@@ -1,9 +1,12 @@
 dist: xenial
+sudo: false
 language: node_js
 node_js:
-  - 'node'
+  - node
 install:
   - npm install
 script:
   - npm run checkstyle
-  - npm run test
+  - npm run test:coveralls
+notifications:
+  - email: false
