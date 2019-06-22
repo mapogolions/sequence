@@ -2,7 +2,7 @@
 
 const { Nil } = require('./adt.js');
 
-const equal = (thunk1, thunk2, comparator = compare) => {
+const equal = (thunk1, thunk2, comparator = compareDefault) => {
   const item1 = thunk1();
   const item2 = thunk2();
   if (item1 === Nil && item2 === Nil) return true;
@@ -14,7 +14,7 @@ const equal = (thunk1, thunk2, comparator = compare) => {
   return false;
 };
 
-const compare = (a, b) => {
+const compareDefault = (a, b) => {
   if (a === b) return 0;
   if (a < b) return -1;
   return 1;
