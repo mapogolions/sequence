@@ -105,7 +105,7 @@ test('generates infinite sequence by rule', () => {
   expect(toArray(take(3, iterate(0, x => x - 1)))).toEqual([0, -1, -2]);
 });
 
-test('checks equlity', () => {
+test('checks equality', () => {
   expect(equal(empty, empty)).toBe(true);
   expect(equal(pure(1), pure(1))).toBe(true);
   expect(equal(pure(1), empty)).toBe(false);
@@ -122,4 +122,11 @@ test('mapping something to something', () => {
 test('filter out elements that do not satisfy the predicate', () => {
   expect(toArray(filter(x => x > 0, to(-1, 1)))).toEqual([1]);
   expect(toArray(filter(x => x % 2 === 0, until(1, 10)))).toEqual([2, 4, 6, 8]);
+});
+
+test('take elements while the satisfy the predicate', () => {
+  expect(toArray(takeWhile(x => x < 0, to(-3, 3)))).toEqual([-3, -2, -1]);
+  expect(toArray(takeWhile(x => x > 0, to(3, -3)))).toEqual([3, 2, 1]);
+  expect(toArray(takeWhile(x => x > 0, to(-3, 3)))).toEqual([]);
+  expect(toArray(takeWhile(x => x < 0, empty))).toEqual([]);
 });
