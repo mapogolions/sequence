@@ -19,6 +19,7 @@ const {
   nth,
   iterate,
   equal,
+  map,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -109,4 +110,10 @@ test('checks equlity', () => {
   expect(equal(pure(1), empty)).toBe(false);
   expect(equal(empty, pure(1))).toBe(false);
   expect(equal(take(5, iterate(1, x => x + 1)), to(1, 5))).toBe(true);
+});
+
+test('mapping something to something', () => {
+  expect(toArray(map(x => x, empty))).toEqual([]);
+  expect(toArray(map(x => x.length, pure('foo')))).toEqual([3]);
+  expect(toArray(map(x => x.length, init(3, _ => 'bar')))).toEqual([3, 3, 3]);
 });
