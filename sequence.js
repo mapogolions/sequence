@@ -18,6 +18,7 @@ const length = require('./src/length.js');
 const nth = require('./src/nth.js');
 const iterate = require('./src/iterate.js');
 const equal = require('./src/equal.js');
+const iter = require('./src/iter.js');
 const map = require('./src/map.js');
 const filter = require('./src/filter.js');
 const sum = require('./src/sum.js');
@@ -41,6 +42,7 @@ module.exports = {
   nth,
   iterate,
   equal,
+  iter,
   map,
   filter,
   sum,
