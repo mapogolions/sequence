@@ -20,6 +20,7 @@ const {
   iterate,
   equal,
   iter,
+  iteri,
   map,
   mapi,
   filter,
@@ -149,4 +150,10 @@ test('iterate on the iterator', () => {
   const callback = jest.fn(x => x);
   iter(callback, to(1, 3));
   expect(callback.mock.calls.length).toBe(3);
+});
+
+test('iterate on the iterator with index as argument', () => {
+  const callback = jest.fn((i, _) => i);
+  iteri(callback, to(-1, 1));
+  expect(callback.mock.calls).toEqual([[0, -1], [1, 0], [2, 1]]);
 });
