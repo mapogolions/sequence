@@ -19,6 +19,7 @@ const nth = require('./src/nth.js');
 const iterate = require('./src/iterate.js');
 const equal = require('./src/equal.js');
 const iter = require('./src/iter.js');
+const iteri = require('./src/iteri.js');
 const map = require('./src/map.js');
 const mapi = require('./src/mapi.js');
 const filter = require('./src/filter.js');
@@ -44,6 +45,7 @@ module.exports = {
   iterate,
   equal,
   iter,
+  iteri,
   map,
   mapi,
   filter,
