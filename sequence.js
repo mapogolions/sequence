@@ -24,6 +24,7 @@ const map = require('./src/map.js');
 const mapi = require('./src/mapi.js');
 const filter = require('./src/filter.js');
 const reduce = require('./src/reduce.js');
+const forAll = require('./src/forAll.js');
 const sum = require('./src/sum.js');
 
 module.exports = {
@@ -51,5 +52,6 @@ module.exports = {
   mapi,
   filter,
   reduce,
+  forAll,
   sum,
 };
