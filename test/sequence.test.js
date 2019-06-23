@@ -24,6 +24,7 @@ const {
   map,
   mapi,
   filter,
+  reduce,
   sum,
 } = require('../sequence.js');
 
@@ -156,4 +157,25 @@ test('iterate on the iterator with index as argument', () => {
   const callback = jest.fn((i, _) => i);
   iteri(callback, to(-1, 1));
   expect(callback.mock.calls).toEqual([[0, -1], [1, 0], [2, 1]]);
+});
+
+test('reduce of the empty iterator without initial raises error', () => {
+  const reduceOfEmptyIterator = () => reduce((acc, x) => acc + x, empty);
+  expect(reduceOfEmptyIterator).toThrowError(Error);
+});
+
+test('reduce of the empty iterator with initial returns initial', () => {
+  expect(reduce((acc, x) => acc + x, empty, 11)).toBe(11);
+});
+
+test('reduce of the iterator without initial', () => {
+  expect(reduce((acc, x) => acc + x, pure(10))).toBe(10);
+  expect(reduce((acc, x) => acc + x, to(1, 2))).toBe(3);
+  expect(reduce((acc, x) => acc + x, to(1, 4))).toBe(10);
+});
+
+test('reduce of the iterator with initial', () => {
+  expect(reduce((acc, x) => acc + x, pure(10), 10)).toBe(20);
+  expect(reduce((acc, x) => acc + x, to(1, 2), 100)).toBe(103);
+  expect(reduce((acc, x) => acc + x, to(1, 4), 100)).toBe(110);
 });
