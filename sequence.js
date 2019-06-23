@@ -23,6 +23,7 @@ const iteri = require('./src/iteri.js');
 const map = require('./src/map.js');
 const mapi = require('./src/mapi.js');
 const filter = require('./src/filter.js');
+const reduce = require('./src/reduce.js');
 const sum = require('./src/sum.js');
 
 module.exports = {
@@ -49,5 +50,6 @@ module.exports = {
   map,
   mapi,
   filter,
+  reduce,
   sum,
 };
