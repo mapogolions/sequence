@@ -21,6 +21,7 @@ const {
   equal,
   iter,
   map,
+  mapi,
   filter,
   sum,
 } = require('../sequence.js');
@@ -119,6 +120,11 @@ test('mapping something to something', () => {
   expect(toArray(map(x => x, empty))).toEqual([]);
   expect(toArray(map(x => x.length, pure('foo')))).toEqual([3]);
   expect(toArray(map(x => x.length, init(3, _ => 'bar')))).toEqual([3, 3, 3]);
+});
+
+test('mapping something to something with index as argument', () => {
+  expect(toArray(mapi((i, x) => i + x, to(-1, 1)))).toEqual([-1, 1, 3]);
+  expect(toArray(mapi((i, x) => i, empty))).toEqual([]);
 });
 
 test('filter out elements that do not satisfy the predicate', () => {
