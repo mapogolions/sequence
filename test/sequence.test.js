@@ -25,6 +25,7 @@ const {
   mapi,
   filter,
   reduce,
+  forAll,
   sum,
 } = require('../sequence.js');
 
@@ -178,4 +179,10 @@ test('reduce of the iterator with initial', () => {
   expect(reduce((acc, x) => acc + x, pure(10), 10)).toBe(20);
   expect(reduce((acc, x) => acc + x, to(1, 2), 100)).toBe(103);
   expect(reduce((acc, x) => acc + x, to(1, 4), 100)).toBe(110);
+});
+
+test('checks', () => {
+  expect(forAll(x => x < 0, to(-2, 0))).toBe(false);
+  expect(forAll(x => x < 0, until(-2, 0))).toBe(true);
+  expect(forAll(x => x > 0, empty)).toBe(true);
 });
