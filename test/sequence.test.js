@@ -29,6 +29,8 @@ const {
   forAll,
   exists,
   sum,
+  max,
+  min,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -199,4 +201,16 @@ test('checks whether the predicate is true for at least one element', () => {
   expect(exists(x => x < 0, to(3, -1))).toBe(true);
   expect(exists(x => x < 0, until(3, -1))).toBe(false);
   expect(exists(_ => true, empty)).toBe(false);
+});
+
+test('maximum element', () => {
+  expect(max(to(1, 10))).toBe(10);
+  expect(max(to(10, 1))).toBe(10);
+  expect(() => max(empty)).toThrowError(Error);
+});
+
+test('minimum element', () => {
+  expect(min(to(1, 10))).toBe(1);
+  expect(min(to(10, 1))).toBe(1);
+  expect(() => min(empty)).toThrowError(Error);
 });
