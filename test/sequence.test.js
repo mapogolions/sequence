@@ -34,6 +34,7 @@ const {
   zipIndex,
   zip,
   drop,
+  dropWhile,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -233,4 +234,11 @@ test('drop N elements', () => {
   expect(toArray(drop(0, to(1, 3)))).toEqual([1, 2, 3]);
   expect(toArray(drop(1, to(1, 3)))).toEqual([2, 3]);
   expect(toArray(drop(5, to(1, 3)))).toEqual([]);
+});
+
+test('drop elements while they satisfy the predicate', () => {
+  expect(toArray(dropWhile(x => x < 0, to(-1, 1)))).toEqual([0, 1]);
+  expect(toArray(dropWhile(x => x > 0, to(-1, 1)))).toEqual([-1, 0, 1]);
+  expect(toArray(dropWhile(_ => true, empty))).toEqual([]);
+  expect(toArray(dropWhile(_ => true, to(-1, 1)))).toEqual([]);
 });
