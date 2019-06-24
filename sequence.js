@@ -28,6 +28,8 @@ const reduce = require('./src/reduce.js');
 const forAll = require('./src/forAll.js');
 const exists = require('./src/exists.js');
 const sum = require('./src/sum.js');
+const max = require('./src/max.js');
+const min = require('./src/min.js');
 
 module.exports = {
   empty,
@@ -58,4 +60,6 @@ module.exports = {
   forAll,
   exists,
   sum,
+  max,
+  min,
 };
