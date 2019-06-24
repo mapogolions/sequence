@@ -32,6 +32,7 @@ const {
   max,
   min,
   zipIndex,
+  zip,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -219,4 +220,9 @@ test('minimum element', () => {
 test('zip elements with their index in the iterator', () => {
   expect(toArray(zipIndex(to(1, 3)))).toEqual([[0, 1], [1, 2], [2, 3]]);
   expect(toArray(zipIndex(empty))).toEqual([]);
+});
+
+test('combine common part of thunks', () => {
+  expect(toArray(zip(to(1, 2), to(1, 3)))).toEqual([[1, 1], [2, 2]]);
+  expect(toArray(zip(to(1, 10), empty))).toEqual([]);
 });
