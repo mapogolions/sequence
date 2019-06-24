@@ -31,6 +31,7 @@ const {
   sum,
   max,
   min,
+  zipIndex,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -213,4 +214,9 @@ test('minimum element', () => {
   expect(min(to(1, 10))).toBe(1);
   expect(min(to(10, 1))).toBe(1);
   expect(() => min(empty)).toThrowError(Error);
+});
+
+test('zip elements with their index in the iterator', () => {
+  expect(toArray(zipIndex(to(1, 3)))).toEqual([[0, 1], [1, 2], [2, 3]]);
+  expect(toArray(zipIndex(empty))).toEqual([]);
 });
