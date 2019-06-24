@@ -6,6 +6,8 @@ const {
   pure,
   cons,
   toArray,
+  toSet,
+  toMap,
   init,
   take,
   takeWhile,
@@ -255,4 +257,18 @@ test('checks whether the given element is a member', () => {
   const eq = (a, b) => a === b ** 2;
   expect(member(eq, 9, to(1, 3))).toBe(true);
   expect(member(eq, 9, until(1, 3))).toBe(false);
+});
+
+test('cast an iterator to the set', () => {
+  expect(toSet(empty)).toEqual(new Set());
+  expect(toSet(to(-1, 0))).toEqual(new Set([-1, 0]));
+  expect(toSet(take(10, repeat('a')))).toEqual(new Set(['a']));
+});
+
+test('cast an iterator to the map', () => {
+  expect(toMap(empty)).toEqual(new Map());
+  expect(toMap(to(-1, 0))).toEqual(new Map([[0, -1], [1, 0]]));
+  expect(toMap(take(3, repeat('a')))).toEqual(
+    new Map([[0, 'a'], [1, 'a'], [2, 'a']]),
+  );
 });
