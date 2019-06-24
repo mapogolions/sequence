@@ -33,6 +33,7 @@ const min = require('./src/min.js');
 const zipIndex = require('./src/zipIndex.js');
 const zip = require('./src/zip.js');
 const drop = require('./src/drop.js');
+const dropWhile = require('./src/dropWhile.js');
 
 module.exports = {
   empty,
@@ -68,4 +69,5 @@ module.exports = {
   zipIndex,
   zip,
   drop,
+  dropWhile,
 };
