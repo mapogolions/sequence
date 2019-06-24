@@ -35,6 +35,7 @@ const {
   zip,
   drop,
   dropWhile,
+  partition,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -241,4 +242,10 @@ test('drop elements while they satisfy the predicate', () => {
   expect(toArray(dropWhile(x => x > 0, to(-1, 1)))).toEqual([-1, 0, 1]);
   expect(toArray(dropWhile(_ => true, empty))).toEqual([]);
   expect(toArray(dropWhile(_ => true, to(-1, 1)))).toEqual([]);
+});
+
+test('returns the elements that satisfy the predicate do not satisfy', () => {
+  expect(partition(x => x < 0, to(-1, 1)).map(thunk => toArray(thunk))).toEqual(
+    [[-1], [0, 1]],
+  );
 });
