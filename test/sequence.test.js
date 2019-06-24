@@ -33,6 +33,7 @@ const {
   min,
   zipIndex,
   zip,
+  drop,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -226,3 +227,10 @@ test('combine common part of thunks', () => {
   expect(toArray(zip(to(1, 2), to(1, 3)))).toEqual([[1, 1], [2, 2]]);
   expect(toArray(zip(to(1, 10), empty))).toEqual([]);
 });
+
+test('drop N elements', () => {
+  expect(toArray(drop(10, empty))).toEqual([]);
+  expect(toArray(drop(0, to(1, 3)))).toEqual([1, 2, 3]);
+  expect(toArray(drop(1, to(1, 3)))).toEqual([2, 3]);
+  expect(toArray(drop(5, to(1, 3)))).toEqual([]);
+})
