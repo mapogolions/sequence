@@ -27,6 +27,7 @@ const {
   filter,
   reduce,
   forAll,
+  exists,
   sum,
 } = require('../sequence.js');
 
@@ -192,4 +193,10 @@ test('checks whether the predicate is true for all elements', () => {
   expect(forAll(x => x < 0, to(-2, 0))).toBe(false);
   expect(forAll(x => x < 0, until(-2, 0))).toBe(true);
   expect(forAll(x => x > 0, empty)).toBe(true);
+});
+
+test('checks whether the predicate, is true for at least one element', () => {
+  expect(exists(x => x < 0, to(3, -1))).toBe(true);
+  expect(exists(x => x < 0, until(3, -1))).toBe(false);
+  expect(exists(_ => true, empty)).toBe(false);
 });
