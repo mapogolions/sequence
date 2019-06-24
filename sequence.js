@@ -30,6 +30,7 @@ const exists = require('./src/exists.js');
 const sum = require('./src/sum.js');
 const max = require('./src/max.js');
 const min = require('./src/min.js');
+const zipIndex = require('./src/zipIndex.js');
 
 module.exports = {
   empty,
@@ -62,4 +63,5 @@ module.exports = {
   sum,
   max,
   min,
+  zipIndex,
 };
