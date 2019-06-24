@@ -34,6 +34,7 @@ const zipIndex = require('./src/zipIndex.js');
 const zip = require('./src/zip.js');
 const drop = require('./src/drop.js');
 const dropWhile = require('./src/dropWhile.js');
+const partition = require('./src/partition.js');
 
 module.exports = {
   empty,
@@ -70,4 +71,5 @@ module.exports = {
   zip,
   drop,
   dropWhile,
+  partition,
 };
