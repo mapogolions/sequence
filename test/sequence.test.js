@@ -233,4 +233,4 @@ test('drop N elements', () => {
   expect(toArray(drop(0, to(1, 3)))).toEqual([1, 2, 3]);
   expect(toArray(drop(1, to(1, 3)))).toEqual([2, 3]);
   expect(toArray(drop(5, to(1, 3)))).toEqual([]);
-})
+});
