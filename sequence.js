@@ -13,6 +13,7 @@ const repeatedly = require('./src/repeatedly.js');
 const to = require('./src/to.js');
 const until = require('./src/until.js');
 const fold = require('./src/fold.js');
+const unfold = require('./src/unfold.js');
 const append = require('./src/append.js');
 const length = require('./src/length.js');
 const nth = require('./src/nth.js');
@@ -41,6 +42,7 @@ module.exports = {
   to,
   until,
   fold,
+  unfold,
   append,
   length,
   nth,
