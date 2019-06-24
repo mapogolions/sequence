@@ -36,6 +36,7 @@ const {
   drop,
   dropWhile,
   partition,
+  member,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -248,4 +249,10 @@ test('returns the elements that satisfy the predicate do not satisfy', () => {
   expect(partition(x => x < 0, to(-1, 1)).map(thunk => toArray(thunk))).toEqual(
     [[-1], [0, 1]],
   );
+});
+
+test('checks whether the given element is a member', () => {
+  const eq = (a, b) => a === b ** 2;
+  expect(member(eq, 9, to(1, 3))).toBe(true);
+  expect(member(eq, 9, until(1, 3))).toBe(false);
 });
