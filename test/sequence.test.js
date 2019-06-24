@@ -14,6 +14,7 @@ const {
   to,
   until,
   fold,
+  unfold,
   append,
   length,
   nth,
@@ -81,6 +82,12 @@ test('range from A to B excluding', () => {
 test('folding recursive data structure', () => {
   expect(fold((seed, x) => seed + x, 100, to(1, 4))).toBe(110);
   expect(fold((seed, x) => [x, ...seed], [], to(1, 3))).toEqual([3, 2, 1]);
+});
+
+test('unfolding', () => {
+  const f = x => (x < 5 ? { done: false, value: x + 1 } : { done: true });
+  expect(toArray(unfold(f, 0))).toEqual([0, 1, 2, 3, 4]);
+  expect(toArray(unfold(f, 5))).toEqual([]);
 });
 
 test('append one sequence to another', () => {
@@ -181,7 +188,7 @@ test('reduce of the iterator with initial', () => {
   expect(reduce((acc, x) => acc + x, to(1, 4), 100)).toBe(110);
 });
 
-test('checks', () => {
+test('checks whether the predicate is true for all elements', () => {
   expect(forAll(x => x < 0, to(-2, 0))).toBe(false);
   expect(forAll(x => x < 0, until(-2, 0))).toBe(true);
   expect(forAll(x => x > 0, empty)).toBe(true);
