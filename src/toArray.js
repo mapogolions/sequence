@@ -1,15 +1,5 @@
 'use strict';
 
-const { Nil } = require('./adt.js');
+const fold = require('./fold.js');
 
-const toArray = thunk => {
-  const iter = (acc, current) => {
-    const item = current();
-    if (item === Nil) return acc;
-    const { head, tail } = item;
-    return iter([...acc, head], tail);
-  };
-  return iter([], thunk);
-};
-
-module.exports = toArray;
+module.exports = thunk => fold((seed, x) => [...seed, x], [], thunk);
