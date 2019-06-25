@@ -16,6 +16,7 @@ const {
   to,
   until,
   fold,
+  foldi,
   unfold,
   append,
   length,
@@ -93,6 +94,10 @@ test('range from A to B excluding', () => {
 test('folding recursive data structure', () => {
   expect(fold((seed, x) => seed + x, 100, to(1, 4))).toBe(110);
   expect(fold((seed, x) => [x, ...seed], [], to(1, 3))).toEqual([3, 2, 1]);
+});
+
+test('folding with index', () => {
+  expect(foldi((seed, x, i) => seed + x + i, 10, to(-1, 1))).toBe(13);
 });
 
 test('unfolding', () => {
