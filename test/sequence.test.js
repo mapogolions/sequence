@@ -11,6 +11,7 @@ const {
   init,
   take,
   takeWhile,
+  takenth,
   repeat,
   repeatedly,
   to,
@@ -164,6 +165,13 @@ test('take elements while the satisfy the predicate', () => {
   expect(toArray(takeWhile(x => x > 0, to(3, -3)))).toEqual([3, 2, 1]);
   expect(toArray(takeWhile(x => x > 0, to(-3, 3)))).toEqual([]);
   expect(toArray(takeWhile(x => x < 0, empty))).toEqual([]);
+});
+
+test('returns every elements of an iterator whose index is a multiple of N', () => {
+  expect(toArray(takenth(2, to(1, 6)))).toEqual([1, 3, 5]);
+  expect(toArray(takenth(1, to(1, 6)))).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(() => takenth(0, to(1, 6))).toThrowError(Error);
+  expect(() => takenth(-1, to(1, 6))).toThrowError(Error);
 });
 
 test('sum of all elements', () => {
