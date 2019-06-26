@@ -136,6 +136,8 @@ test('generates infinite sequence by rule', () => {
 test('checks equality', () => {
   expect(equal(empty, empty)).toBe(true);
   expect(equal(pure(1), pure(1))).toBe(true);
+  expect(equal(pure(1), pure(2))).toBe(false);
+  expect(equal(pure(2), pure(1))).toBe(false);
   expect(equal(pure(1), empty)).toBe(false);
   expect(equal(empty, pure(1))).toBe(false);
   expect(equal(take(5, iterate(1, x => x + 1)), to(1, 5))).toBe(true);
