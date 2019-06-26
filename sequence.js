@@ -42,6 +42,7 @@ const partition = require('./src/partition.js');
 const member = require('./src/member.js');
 const interleave = require('./src/interleave.js');
 const scan = require('./src/scan.js');
+const flatMap = require('./src/flatMap.js');
 
 module.exports = {
   empty,
@@ -86,4 +87,5 @@ module.exports = {
   member,
   interleave,
   scan,
+  flatMap,
 };
