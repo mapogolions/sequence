@@ -43,6 +43,7 @@ const {
   member,
   interleave,
   scan,
+  flatMap,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -298,4 +299,10 @@ test('scan like fold, but keeping successive values of the accumulator', () => {
     '-1',
     '-12',
   ]);
+});
+
+test('monadic bind', () => {
+  expect(length(flatMap(x => empty, to(1, 2)))).toBe(0);
+  expect(length(flatMap(x => pure(x), empty))).toBe(0);
+  expect(toArray(flatMap(x => pure(x), to(0, 2)))).toEqual([0, 1, 2]);
 });
