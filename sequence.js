@@ -10,6 +10,7 @@ const toMap = require('./src/toMap.js');
 const init = require('./src/init.js');
 const take = require('./src/take.js');
 const takeWhile = require('./src/takeWhile.js');
+const takenth = require('./src/takenth.js');
 const repeat = require('./src/repeat.js');
 const repeatedly = require('./src/repeatedly.js');
 const to = require('./src/to.js');
@@ -52,6 +53,7 @@ module.exports = {
   init,
   take,
   takeWhile,
+  takenth,
   repeat,
   repeatedly,
   to,
