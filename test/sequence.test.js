@@ -40,6 +40,7 @@ const {
   dropWhile,
   partition,
   member,
+  interleave,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -276,4 +277,12 @@ test('cast an iterator to the map', () => {
   expect(toMap(take(3, repeat('a')))).toEqual(
     new Map([[0, 'a'], [1, 'a'], [2, 'a']]),
   );
+});
+
+test('yields an element of A, then an element of B, and so on', () => {
+  expect(toArray(interleave(to(1, 2), empty))).toEqual([1, 2]);
+  expect(toArray(interleave(empty, to(1, 2)))).toEqual([1, 2]);
+  expect(toArray(interleave(to(1, 2), pure(3)))).toEqual([1, 3, 2]);
+  expect(toArray(interleave(pure(3), to(1, 2)))).toEqual([3, 1, 2]);
+  expect(toArray(interleave(to(1, 2), to(3, 4)))).toEqual([1, 3, 2, 4]);
 });
