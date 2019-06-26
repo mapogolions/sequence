@@ -39,6 +39,7 @@ const drop = require('./src/drop.js');
 const dropWhile = require('./src/dropWhile.js');
 const partition = require('./src/partition.js');
 const member = require('./src/member.js');
+const interleave = require('./src/interleave.js');
 
 module.exports = {
   empty,
@@ -80,4 +81,5 @@ module.exports = {
   dropWhile,
   partition,
   member,
+  interleave,
 };
