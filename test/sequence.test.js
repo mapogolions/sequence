@@ -44,6 +44,7 @@ const {
   interleave,
   scan,
   flatMap,
+  cycle,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -307,4 +308,8 @@ test('monadic bind', () => {
   expect(length(flatMap(x => empty, to(1, 2)))).toBe(0);
   expect(length(flatMap(x => pure(x), empty))).toBe(0);
   expect(toArray(flatMap(x => pure(x), to(0, 2)))).toEqual([0, 1, 2]);
+});
+
+test('cycle through the iterator infinitely', () => {
+  expect(toArray(take(5, cycle(to(1, 2))))).toEqual([1, 2, 1, 2, 1]);
 });
