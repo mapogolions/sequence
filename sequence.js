@@ -41,6 +41,7 @@ const dropWhile = require('./src/dropWhile.js');
 const partition = require('./src/partition.js');
 const member = require('./src/member.js');
 const interleave = require('./src/interleave.js');
+const intersperse = require('./src/intersperse.js');
 const scan = require('./src/scan.js');
 const flatMap = require('./src/flatMap.js');
 const cycle = require('./src/cycle.js');
@@ -87,6 +88,7 @@ module.exports = {
   partition,
   member,
   interleave,
+  intersperse,
   scan,
   flatMap,
   cycle,
