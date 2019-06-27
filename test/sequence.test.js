@@ -42,6 +42,7 @@ const {
   partition,
   member,
   interleave,
+  intersperse,
   scan,
   flatMap,
   cycle,
@@ -293,6 +294,12 @@ test('yields an element of A, then an element of B, and so on', () => {
   expect(toArray(interleave(to(1, 2), pure(3)))).toEqual([1, 3, 2]);
   expect(toArray(interleave(pure(3), to(1, 2)))).toEqual([3, 1, 2]);
   expect(toArray(interleave(to(1, 2), to(3, 4)))).toEqual([1, 3, 2, 4]);
+});
+
+test('put the separator element between all elements of the given iterator', () => {
+  expect(toArray(intersperse(0, to(1, 3)))).toEqual([1, 0, 2, 0, 3]);
+  expect(toArray(intersperse(0, pure(1)))).toEqual([1]);
+  expect(toArray(intersperse(0, empty))).toEqual([]);
 });
 
 test('scan like fold, but keeping successive values of the accumulator', () => {
