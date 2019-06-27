@@ -43,6 +43,7 @@ const member = require('./src/member.js');
 const interleave = require('./src/interleave.js');
 const scan = require('./src/scan.js');
 const flatMap = require('./src/flatMap.js');
+const cycle = require('./src/cycle.js');
 
 module.exports = {
   empty,
@@ -88,4 +89,5 @@ module.exports = {
   interleave,
   scan,
   flatMap,
+  cycle,
 };
