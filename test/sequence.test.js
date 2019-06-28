@@ -46,6 +46,7 @@ const {
   scan,
   flatMap,
   cycle,
+  group,
 } = require('../sequence.js');
 
 test('checks if the sequence is empty', () => {
@@ -319,4 +320,13 @@ test('monadic bind', () => {
 
 test('cycle through the iterator infinitely', () => {
   expect(toArray(take(5, cycle(to(1, 2))))).toEqual([1, 2, 1, 2, 1]);
+});
+
+test('group equal consecutive elements together', () => {
+  const eq = (a, b) => a === b;
+  expect(toArray(map(x => toArray(x), group(eq, empty)))).toEqual([]);
+  expect(toArray(map(x => toArray(x), group(eq, to(1, 2))))).toEqual([
+    [1],
+    [2],
+  ]);
 });
