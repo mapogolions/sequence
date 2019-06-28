@@ -9,7 +9,7 @@ const nth = (index, thunk) => {
   const iter = (index, current) => {
     const item = current();
     if (item === Nil) {
-      throw new Error('Not found');
+      throw new RangeError('Index out of bounds');
     }
     const { head, tail } = item;
     if (index <= 0) return head;
