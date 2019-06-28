@@ -45,6 +45,7 @@ const intersperse = require('./src/intersperse.js');
 const scan = require('./src/scan.js');
 const flatMap = require('./src/flatMap.js');
 const cycle = require('./src/cycle.js');
+const group = require('./src/group.js');
 
 module.exports = {
   empty,
@@ -92,4 +93,5 @@ module.exports = {
   scan,
   flatMap,
   cycle,
+  group,
 };
