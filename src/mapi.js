@@ -7,7 +7,7 @@ const mapi = (f, thunk) => {
     const item = current();
     if (item === Nil) return Nil;
     const { head, tail } = item;
-    return Cons(f(index, head), iter(index + 1, tail));
+    return Cons(f(head, index), iter(index + 1, tail));
   };
   return iter(0, thunk);
 };

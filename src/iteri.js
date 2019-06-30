@@ -7,7 +7,7 @@ const iteri = (f, thunk) => {
     const item = current();
     if (item === Nil) return;
     const { head, tail } = item;
-    f(index, head);
+    f(head, index);
     rec(index + 1, tail);
   };
   return rec(0, thunk);
