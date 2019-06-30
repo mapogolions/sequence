@@ -202,7 +202,7 @@ describe('equality of iterators', () => {
 
   test('if one of the iterators is empty', () => {
     expect(equal(pure(1), empty)).toBe(false);
-    expect(equal(empty, to(1, 2))).toBe(false);
+    expect(equal(empty, pure(1))).toBe(false);
   });
 
   test('iterators with different length are not equal to each other', () => {
@@ -211,11 +211,13 @@ describe('equality of iterators', () => {
 
   test('iterators with different elements are not equal to each other', () => {
     expect(equal(pure(1), pure(2))).toBe(false);
+    expect(equal(pure(2), pure(1))).toBe(false);
     expect(equal(to(1, 2), to(2, 3))).toBe(false);
   });
 
   test('iterators with the same length and elements are equal', () => {
-    expect(equal(to(1, 2), until(1, 3))).toBe(true);
+    expect(equal(pure(1), pure(1))).toBe(true);
+    expect(equal(take(5, iterate(1, x => x + 1)), to(1, 5))).toBe(true);
   });
 });
 
