@@ -135,10 +135,16 @@ describe('range from A to B excluding', () => {
   });
 });
 
-test('folding with index', () => {
-  const result = foldi((seed, x, i) => seed + x + i, 10, to(-1, 1));
-  const expected = 13;
-  expect(result).toBe(expected);
+describe('folding', () => {
+  test('ignore index', () => {
+    const result = fold((seed, x) => seed + x, 0, to(1, 4));
+    expect(result).toBe(10);
+  });
+
+  test('index is passed as argument', () => {
+    const result = foldi((seed, x, i) => seed + x + i, 10, to(-1, 1));
+    expect(result).toBe(13);
+  });
 });
 
 test('unfolding', () => {
@@ -194,9 +200,13 @@ describe('equality of iterators', () => {
     expect(equal(empty, empty)).toBe(true);
   });
 
-  test('iterators with different length are not equal to each other', () => {
+  test('if one of the iterators is empty', () => {
     expect(equal(pure(1), empty)).toBe(false);
     expect(equal(empty, to(1, 2))).toBe(false);
+  });
+
+  test('iterators with different length are not equal to each other', () => {
+    expect(equal(to(1, 3), until(1, 3))).toBe(false);
   });
 
   test('iterators with different elements are not equal to each other', () => {
@@ -212,10 +222,12 @@ describe('equality of iterators', () => {
 describe('iterator mapping', () => {
   test('mapping of the empty iterator', () => {
     expect(toArray(map(x => x, empty))).toEqual([]);
+    expect(toArray(mapi((x, i) => x + i, empty))).toEqual([]);
   });
 
   test('strings are mapped to nums', () => {
     expect(toArray(map(x => x.length, pure('foo')))).toEqual([3]);
+    expect(toArray(mapi((_, i) => i, pure(10)))).toEqual([0]);
   });
 });
 
@@ -279,8 +291,9 @@ test('iterate on the iterator', () => {
 
 test('iterate on the iterator with index as argument', () => {
   const callback = jest.fn((i, _) => i);
+  const expected = [[-1, 0], [0, 1], [1, 2]];
   iteri(callback, to(-1, 1));
-  expect(callback.mock.calls).toEqual([[0, -1], [1, 0], [2, 1]]);
+  expect(callback.mock.calls).toEqual(expected);
 });
 
 describe('executes a reducer function on each element ', () => {
@@ -354,7 +367,7 @@ test('drop elements while they satisfy the predicate', () => {
   expect(toArray(dropWhile(_ => true, to(-1, 1)))).toEqual([]);
 });
 
-test('returns the elements that satisfy the predicate do not satisfy', () => {
+test('returns the elements that satisfy / do not satisfy the predicate', () => {
   const [success, failure] = partition(x => x < 0, to(-1, 1));
   const expectedSuccess = [-1];
   const expectedFailure = [0, 1];
@@ -441,13 +454,13 @@ describe('group equal consecutive elements together', () => {
     expect(toArray(map(toArray.bind(null), group(eq, empty)))).toEqual([]);
   });
 
-  test('grouped in pairs', () => {
+  test('elements are grouped in pairs', () => {
     const iterator = group(eq, interleave(to(1, 3), to(1, 3)));
     const expected = [[1, 1], [2, 2], [3, 3]];
     expect(toArray(map(toArray.bind(null), iterator))).toEqual(expected);
   });
 
-  test('grouped only consecutive elements', () => {
+  test('only consecutive elements are grouped', () => {
     const iterator = group(eq, append(to(1, 3), to(3, 1)));
     const expected = [[1], [2], [3, 3], [2], [1]];
     expect(toArray(map(toArray.bind(null), iterator))).toEqual(expected);
