@@ -8,4 +8,4 @@ module.exports = function* toES6Iterator(thunk) {
   const { head, tail } = item;
   yield head;
   yield* toES6Iterator(tail);
-}
+};
