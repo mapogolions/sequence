@@ -8,6 +8,7 @@ const {
   toArray,
   toSet,
   toMap,
+  toES6Iterator,
   init,
   take,
   takeWhile,
@@ -401,6 +402,22 @@ describe('convert an iterator to a collection', () => {
     const expected = new Map([[0, 'a'], [1, 'a'], [2, 'a']]);
     expect(toMap(iterator)).toEqual(expected);
     expect(toMap(empty)).toEqual(new Map());
+  });
+
+  test('empty functional iterator supports ES6 iteration protocol', () => {
+    const callback = jest.fn(x => x);
+    for (const elem of toES6Iterator(empty)) {
+      callback(elem);
+    }
+    expect(callback.mock.calls.length).toBe(0);
+  });
+
+  test('non-empty functional iterator supports ES6 iteration protocol', () => {
+    const callback = jest.fn(x => x);
+    for (const elem of toES6Iterator(to(-1, 1))) {
+      callback(elem);
+    }
+    expect(callback.mock.calls.length).toBe(3);
   });
 });
 
