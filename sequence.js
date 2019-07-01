@@ -7,6 +7,7 @@ const isEmpty = require('./src/isEmpty.js');
 const toArray = require('./src/toArray.js');
 const toSet = require('./src/toSet.js');
 const toMap = require('./src/toMap.js');
+const toES6Iterator = require('./src/toES6Iterator.js');
 const init = require('./src/init.js');
 const take = require('./src/take.js');
 const takeWhile = require('./src/takeWhile.js');
@@ -55,6 +56,7 @@ module.exports = {
   toArray,
   toSet,
   toMap,
+  toES6Iterator,
   init,
   take,
   takeWhile,
