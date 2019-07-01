@@ -10,7 +10,7 @@ Some of the obvious things we might try simply don't work.
 
 ```javascript
 function from(start) {
-  return [start, ...nums(start + 1)]; // isn't tailrec
+  return [start, ...from(start + 1)]; // isn't tailrec
 }
 const nats = from(0);
 // Stack overflow
@@ -20,7 +20,7 @@ const nats = from(0);
 function from(start) {
   const iter = (acc, n) => {
     acc.push(n);
-    retrun iter(acc, n + 1); // tailrec
+    return iter(acc, n + 1); // tailrec
   };
   return iter([], start);
 }
