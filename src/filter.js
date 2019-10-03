@@ -2,6 +2,7 @@
 
 const { Cons, Nil } = require('./adt.js');
 
+// (a -> bool) -> 'a t -> 'a t
 const filter = (p, thunk) => () => {
   const item = thunk();
   if (item === Nil) return Nil;

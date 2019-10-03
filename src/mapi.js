@@ -2,6 +2,7 @@
 
 const { Nil, Cons } = require('./adt.js');
 
+// (a -> int -> b) -> 'a t -> 'b t
 const mapi = (f, thunk) => {
   const iter = (index, current) => () => {
     const item = current();
