@@ -2,6 +2,7 @@
 
 const { Nil, Cons } = require('./adt.js');
 
+// (a -> b) -> 'a t -> 'b t
 const map = (f, thunk) => () => {
   const item = thunk();
   if (item === Nil) return Nil;
